@@ -1,0 +1,21 @@
+<p>
+  login works!
+</p>
+<h2>Please login</h2>
+<form (ngSubmit)="submit()">
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" [(ngModel)]="username" class="form-control" />
+    <div *ngIf="submitted && username === ''">
+      <div>Username is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" class="form-control" />
+    <div *ngIf="submitted && password === ''" >
+      <div>Password is required</div>
+    </div>
+  </div>
+</form>
+<div>testdiv {{testUsername}}</div>

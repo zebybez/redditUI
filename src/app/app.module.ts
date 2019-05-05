@@ -13,6 +13,8 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CommentCreateComponent } from './components/comment-create/comment-create.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { RedditCreateComponent } from './components/reddit-create/reddit-create.component';
+import { LoginComponent } from './components/login/login.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { RedditCreateComponent } from './components/reddit-create/reddit-create.
     CommentComponent,
     CommentCreateComponent,
     PostCreateComponent,
-    RedditCreateComponent
+    RedditCreateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

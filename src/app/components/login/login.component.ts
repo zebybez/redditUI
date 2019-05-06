@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.testUsername = this.email;
     this.submitted = true;
-    this.messageService.add('submitting credentials');
+    this.messageService.add('entered credentials');
     this.authService.login(this.email, this.password).subscribe(jwt => this.checkLogin(jwt));
   }
 

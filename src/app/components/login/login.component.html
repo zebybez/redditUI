@@ -17,7 +17,7 @@
   <div [hidden]="passCheck.valid || passCheck.pristine">
     password is required
   </div>
-  <button type="submit">Login</button>
+  <button type="submit" [disabled]="passCheck.invalid || emailCheck.invalid">Login</button>
 
 <!--  <br>-->
 <!--  <div>-->

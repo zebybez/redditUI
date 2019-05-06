@@ -15,6 +15,8 @@ import { PostCreateComponent } from './components/post-create/post-create.compon
 import { RedditCreateComponent } from './components/reddit-create/reddit-create.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule} from '@angular/forms';
+import { MessageComponent } from './components/message/message.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {FormsModule} from '@angular/forms';
     CommentCreateComponent,
     PostCreateComponent,
     RedditCreateComponent,
-    LoginComponent
+    LoginComponent,
+    MessageComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

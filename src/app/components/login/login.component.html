@@ -2,20 +2,28 @@
   login works!
 </p>
 <h2>Please login</h2>
-<form (ngSubmit)="submit()">
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" [(ngModel)]="username" class="form-control" />
-    <div *ngIf="submitted && username === ''">
-      <div>Username is required</div>
-    </div>
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+  <div class="form=group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" required [(ngModel)]="email" name="email" #emailCheck="ngModel">
+  </div>
+  <div [hidden]="emailCheck.valid || emailCheck.pristine">
+    email is required
   </div>
   <div class="form-group">
-    <label>Password</label>
-    <input type="password" [(ngModel)]="password" class="form-control" />
-    <div *ngIf="submitted && password === ''" >
-      <div>Password is required</div>
-    </div>
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" required [(ngModel)]="password" name="password" #passCheck="ngModel">
   </div>
+  <div [hidden]="passCheck.valid || passCheck.pristine">
+    password is required
+  </div>
+  <button type="submit">Login</button>
+
+<!--  <br>-->
+<!--  <div>-->
+<!--    <label for="registerBtn">No account? Click here to register:</label>-->
+<!--    <button id="registerBtn" routerLink="/register">register</button>-->
+<!--  </div>-->
+  <br>
+  testemail:{{testUsername}}
 </form>
-<div>testdiv {{testUsername}}</div>

@@ -19,7 +19,7 @@ export class AuthenticationService {
   login(email: string, password: string): Observable<string> {
     const headers = this.httpOptions.headers.append('email', email).append('password', password);
 
-    return this.http.post<string>(this.authUrl, headers).pipe(
+    return this.http.post<string>(`${this.authUrl}${'/login'}`, headers).pipe(
       tap(x => this.log(`logged in with token: ${x}`)),
       catchError(this.handleError<string>('Login'))
     );

@@ -1,23 +1,24 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {MessageService} from '../message/message.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Post} from '../../domain/post';
+import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
-  private authUrl = 'http://localhost:8080/reddit/api/auth';  // URL to auth web api
+export class PostService {
+  private postUrl = 'http://localhost:8080/reddit/api/posts';  // URL to post web api
 
-  constructor(private http: HttpClient, private messageService: MessageService) {
-  }
 
-  login(gemail: string, gpassword: string): Observable<string> {
-    return this.http.post(`${this.authUrl}/${'login'}`, null, {headers: {email: gemail, password: gpassword}}).pipe(
-      tap(x => this.log(`logged in with token: ${x}`)),
-      catchError(this.handleError<string>('Login', ''))
-    ) as Observable<string>;
+  constructor(private http: HttpClient, private messageService: MessageService) { }
+
+  getAllPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`this.postUrl`, {}).pipe(
+      tap(x => this.log(`got all ${x.length} posts`)),
+      catchError(this.handleError<Post[]>('get all posts'))
+    );
   }
 
   /** Log a message to the messageService */

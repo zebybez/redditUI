@@ -42,4 +42,8 @@ export class AuthenticationService {
       return of(result as T);
     };
   }
+
+  logout() {
+    localStorage.clear();
+  }
 }

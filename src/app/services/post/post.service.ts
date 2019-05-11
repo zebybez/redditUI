@@ -15,7 +15,7 @@ export class PostService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`this.postUrl`, {}).pipe(
+    return this.http.get<Post[]>(`${this.postUrl}`, {}).pipe(
       tap(x => this.log(`got all ${x.length} posts`)),
       catchError(this.handleError<Post[]>('get all posts'))
     );
@@ -23,7 +23,7 @@ export class PostService {
 
   /** Log a message to the messageService */
   private log(message: string) {
-    this.messageService.add(`authService: ${message}`);
+    this.messageService.add(`postService: ${message}`);
   }
 
   /**
@@ -42,5 +42,12 @@ export class PostService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  getPostsBySubredditName(subredditName: string): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.postUrl}/sub/${subredditName}`, {}).pipe(
+      tap(x => this.log(`got ${x.length} posts from ${subredditName}`)),
+      catchError(this.handleError<Post[]>('get posts by subreddit'))
+    );
   }
 }

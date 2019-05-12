@@ -1,4 +1,10 @@
 <p>
   post-list works!
 </p>
-<div *ngFor="let post of posts"> {{post.creator.name}} <br> <h5>{{post.content}}</h5></div>
+<div>
+  <ul>
+  <li *ngFor="let post of posts"> <b>{{post.title}}</b> <br>{{post.content}} <br> <i>posted by:{{post.creator.name}}</i></li>
+</ul>
+</div>
+
+

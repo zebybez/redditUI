@@ -1,12 +1,14 @@
 <p>
   reddit works!
 </p>
-
+<app-account-small></app-account-small>
+<div>
 <div *ngIf="subreddit; else emptySubreddit"><h1>
   {{subreddit.name}}
 </h1></div>
 <ng-template #emptySubreddit> This subreddit does not exist </ng-template>
 <br>
-<app-account-small></app-account-small>
-<br>
-<app-post-list [subredditName]="name"></app-post-list>
+  <br>
+  <app-post-list [subredditName]="name"></app-post-list>
+</div>
+

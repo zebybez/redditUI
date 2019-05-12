@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+div {
+  border-style: solid;
+  border-color: black;
+  padding: 5px;
+  margin: 5px;
+}

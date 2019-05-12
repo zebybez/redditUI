@@ -19,8 +19,8 @@ export class RedditComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.add('reddit component launched');
-    this.subredditService.getSubredditByName(this.route.snapshot.paramMap.get('name')).subscribe(x => this.subreddit = x);
     this.name = this.route.snapshot.paramMap.get('name');
+    this.subredditService.getSubredditByName(this.name).subscribe(x => this.subreddit = x);
   }
 
 }

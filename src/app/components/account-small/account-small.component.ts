@@ -15,16 +15,13 @@ export class AccountSmallComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (localStorage.getItem('token') !== '') {
-      this.loggedIn = true;
-    } else {
-      this.loggedIn = false;
-    }
+    this.loggedIn = localStorage.getItem('token') !== null;
   }
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/r']);
+    this.router.navigate(['/r/all']);
+    window.location.reload();
   }
 
 }

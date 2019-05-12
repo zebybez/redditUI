@@ -11,13 +11,19 @@ export class PostListComponent implements OnInit {
 
   @Input() subredditName: string;
   posts: Post[];
-  constructor(private postService: PostService) { }
+
+  constructor(private postService: PostService) {
+  }
 
   ngOnInit() {
     this.getPosts();
   }
 
   getPosts() {
-    this.postService.getPostsBySubredditName(this.subredditName).subscribe(x => this.posts = x);
+    if (this.subredditName === 'all') {
+      this.postService.getAllPosts().subscribe(x => this.posts = x);
+    } else {
+      this.postService.getPostsBySubredditName(this.subredditName).subscribe(x => this.posts = x);
+    }
   }
 }

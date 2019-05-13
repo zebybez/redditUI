@@ -7,21 +7,21 @@
   <form (ngSubmit)="onRegister()" #registerForm="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" class="form-control" id="email" required [(ngModel)]="email" #emailCheck="ngModel">
+      <input type="text" class="form-control" id="email" required [(ngModel)]="email" name="email" #emailCheck="ngModel">
     </div>
     <div [hidden]="emailCheck.valid || emailCheck.pristine">
       a valid email is required
     </div>
     <div class="form-group">
       <label for="name">Display name</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="name" #nameCheck="ngModel">
+      <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name" #nameCheck="ngModel">
     </div>
     <div [hidden]="nameCheck.valid || nameCheck.pristine">
       a display name is required
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" required [(ngModel)]="password" #passwordCheck="ngModel">
+      <input type="password" class="form-control" id="password" required [(ngModel)]="password" name="password" #passwordCheck="ngModel">
     </div>
     <div [hidden]="passwordCheck.valid || passwordCheck.pristine">
       password is required

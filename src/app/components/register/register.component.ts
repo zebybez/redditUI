@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../../services/auth/authentication.service';
+import {MessageService} from '../../services/message/message.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,12 @@ export class RegisterComponent implements OnInit {
   name: string;
   password: string;
   submitted: boolean;
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthenticationService) { }
+
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private authService: AuthenticationService,
+              private messageService: MessageService) {
+  }
 
   ngOnInit() {
     this.submitted = false;
@@ -21,10 +27,12 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     this.submitted = true;
-    this.authService.register(this.email, this.name, this.password).subscribe(x => this.redirect());
+    this.authService.register(this.email, this.name, this.password).subscribe(x => this.redirect(x));
   }
 
-  redirect() {
-    this.router.navigate(['/r/all']);
+  redirect(x) {
+    if (x !== undefined) {
+      this.router.navigate(['/r/all']);
+    }
   }
 }

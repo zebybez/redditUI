@@ -3,5 +3,5 @@
 </p>
 <div>
 <div *ngIf="loggedIn; else pleaseLogin"> welcome back! <br><button (click)="logout()">logout</button></div>
-<ng-template #pleaseLogin> You are currently not logged in,<br><button routerLink="/login">click here to log in</button></ng-template>
+<ng-template #pleaseLogin> You are currently not logged in,<br><button routerLink="/login">click here to log in</button> or <button routerLink="/register">click here to register</button></ng-template>
 </div>

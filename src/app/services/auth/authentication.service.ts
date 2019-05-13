@@ -19,7 +19,12 @@ export class AuthenticationService {
       catchError(this.handleError<string>('Login', ''))
     ) as Observable<string>;
   }
-
+  register(gemail: string, gname: string, gpassword: string) {
+    return this.http.post(this.authUrl + '/register', null, {headers: {email: gemail, name: gname, password: gpassword}}).pipe(
+      tap(x => this.log('registered new account: ' + gname)),
+      catchError(this.handleError('register'))
+    );
+  }
   /** Log a message to the messageService */
   private log(message: string) {
     this.messageService.add(`authService: ${message}`);
@@ -46,4 +51,6 @@ export class AuthenticationService {
   logout() {
     localStorage.clear();
   }
+
+
 }

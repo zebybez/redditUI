@@ -1,9 +1,10 @@
 <p>
   login works!
 </p>
+<div>
 <h2>Please login</h2>
 <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-  <div class="form=group">
+  <div class="form-group">
     <label for="email">Email</label>
     <input type="text" class="form-control" id="email" required [(ngModel)]="email" name="email" #emailCheck="ngModel">
   </div>
@@ -19,11 +20,13 @@
   </div>
   <button type="submit" [disabled]="passCheck.invalid || emailCheck.invalid">Login</button>
 
-<!--  <br>-->
-<!--  <div>-->
-<!--    <label for="registerBtn">No account? Click here to register:</label>-->
-<!--    <button id="registerBtn" routerLink="/register">register</button>-->
-<!--  </div>-->
+
   <br>
   testemail:{{testUsername}}
 </form>
+  <br>
+
+    <label for="registerBtn">No account? Click here to register:</label>
+    <button id="registerBtn" routerLink="/register">register</button>
+</div>
+

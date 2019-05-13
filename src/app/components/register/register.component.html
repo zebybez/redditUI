@@ -7,7 +7,7 @@
   <form (ngSubmit)="onRegister()" #registerForm="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" class="form-control" id="email" required [(ngModel)]="email" name="email" #emailCheck="ngModel">
+      <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email" #emailCheck="ngModel">
     </div>
     <div [hidden]="emailCheck.valid || emailCheck.pristine">
       a valid email is required

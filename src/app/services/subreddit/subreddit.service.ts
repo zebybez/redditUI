@@ -19,7 +19,9 @@ export class SubredditService {
       catchError(this.handleError<Subreddit>(`get subreddit by name`))
     );
   }
-
+  createNewSubreddit(subredditName: string, rules: string) {
+    // todo
+  }
   /** Log a message to the messageService */
   private log(message: string) {
     this.messageService.add(`subredditService: ${message}`);
@@ -42,4 +44,6 @@ export class SubredditService {
       return of(result as T);
     };
   }
+
+
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SubredditService} from '../../services/subreddit/subreddit.service';
+import {MessageService} from '../../services/message/message.service';
 
 @Component({
   selector: 'app-reddit-create',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RedditCreateComponent implements OnInit {
 
-  constructor() { }
+  rules: string;
+  subredditName: string;
+  constructor(private subredditService: SubredditService, private messageService: MessageService) { }
 
   ngOnInit() {
+  }
+
+  createSubreddit() {
+    this.messageService.add(this.rules);
+    this.subredditService.createNewSubreddit(this.subredditName, this.rules);
   }
 
 }

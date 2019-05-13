@@ -1,3 +1,19 @@
 <p>
   reddit-create works!
 </p>
+<div>
+<h3>Create your own subreddit</h3>
+  <form (ngSubmit)="createSubreddit()" id="createRedditForm">
+    <div class="form-group">
+      <label for="subredditName">Choose a name for your subreddit: </label>
+      <input type="text" class="form-control" id="subredditName" required [(ngModel)]="subredditName" name="subredditName" #nameCheck="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="rules">Describe how people should generally behave on this subreddit</label>
+      <br>
+      <textarea id="rules" form="createRedditForm" required [(ngModel)]="rules" name="rules">Enter your description...</textarea>
+    </div>
+    <button type="submit">Create subreddit</button>
+  </form>
+
+</div>

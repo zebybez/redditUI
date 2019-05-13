@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../services/auth/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from '../../services/message/message.service';
+import * as jwt_decode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-login',
@@ -34,6 +36,12 @@ export class LoginComponent implements OnInit {
   checkLogin(x: string): void {
     if (x !== '') {
       localStorage.setItem('token', x);
+      const decoded = jwt_decode(x);
+      const obj = JSON.stringify(decoded);
+      // The client server convention is to send the important credentials in jwt inside a payload object
+      // payload does exit on decoded, angular just does not know it.
+      localStorage.setItem('username', decoded.payload.name);
+      localStorage.setItem('role', decoded.payload.roleName);
       this.router.navigate(['/r/all']);
     } else {
       this.messageService.add(`invalid login attempt`);

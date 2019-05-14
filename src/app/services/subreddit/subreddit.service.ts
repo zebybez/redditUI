@@ -19,8 +19,11 @@ export class SubredditService {
       catchError(this.handleError<Subreddit>(`get subreddit by name`))
     );
   }
-  createNewSubreddit(subredditName: string, rules: string) {
-    // todo
+  createNewSubreddit(userName: string, subredditName: string, rulez: string): Observable<Subreddit> {
+    return this.http.post<Subreddit>(this.subredditUrl, null, {headers: {username: userName, name: subredditName, rules: rulez}}).pipe(
+      tap(x => this.log('added new subreddit'),
+      catchError(this.handleError<Subreddit>('create new subreddit'))
+    ));
   }
   /** Log a message to the messageService */
   private log(message: string) {

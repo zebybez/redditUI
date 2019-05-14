@@ -9,26 +9,25 @@ import {PostService} from '../../services/post/post.service';
 })
 export class PostListComponent implements OnInit {
 
-  _subredditName: string;
+  subName: string;
   posts: Post[];
 
   @Input()
   set subredditName(x: string) {
-    this._subredditName = x;
+    this.subName = x;
     this.getPosts();
   }
   constructor(private postService: PostService) {
   }
 
   ngOnInit() {
-    this.getPosts();
   }
 
   getPosts() {
-    if (this._subredditName === 'all') {
+    if (this.subName === 'all') {
       this.postService.getAllPosts().subscribe(x => this.posts = x);
     } else {
-      this.postService.getPostsBySubredditName(this._subredditName).subscribe(x => this.posts = x);
+      this.postService.getPostsBySubredditName(this.subName).subscribe(x => this.posts = x);
     }
   }
 }

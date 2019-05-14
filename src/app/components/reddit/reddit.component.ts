@@ -27,7 +27,6 @@ export class RedditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.init();
   }
 
   init() {

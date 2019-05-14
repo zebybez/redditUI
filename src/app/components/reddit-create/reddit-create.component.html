@@ -3,7 +3,7 @@
 </p>
 <div>
 <h3>Create your own subreddit</h3>
-  <form (ngSubmit)="createSubreddit()" id="createRedditForm">
+  <form *ngIf="loggedIn; else notLoggedIn" (ngSubmit)="createSubreddit()" id="createRedditForm">
     <div class="form-group">
       <label for="subredditName">Choose a name for your subreddit: </label>
       <input type="text" class="form-control" id="subredditName" required [(ngModel)]="subredditName" name="subredditName" #nameCheck="ngModel">
@@ -15,5 +15,5 @@
     </div>
     <button type="submit">Create subreddit</button>
   </form>
-
+  <ng-template #notLoggedIn>You must be logged in to create your own subreddit</ng-template>
 </div>

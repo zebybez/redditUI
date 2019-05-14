@@ -3,6 +3,7 @@ import {AuthenticationService} from '../../services/auth/authentication.service'
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from '../../services/message/message.service';
 import * as jwt_decode from 'jwt-decode';
+import {JwtObject} from '../../domain/jwt-object';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
   checkLogin(x: string): void {
     if (x !== '') {
       localStorage.setItem('token', x);
-      const decoded = jwt_decode(x);
+      const decoded = jwt_decode(x) as JwtObject;
       const obj = JSON.stringify(decoded);
       // The client server convention is to send the important credentials in jwt inside a payload object
       // payload does exit on decoded, angular just does not know it.

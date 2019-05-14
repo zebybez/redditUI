@@ -10,12 +10,14 @@ import {Router} from '@angular/router';
 export class AccountSmallComponent implements OnInit {
 
   loggedIn: boolean;
+  userName: string;
 
   constructor(private authService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit() {
     this.loggedIn = localStorage.getItem('token') !== null;
+    this.userName = localStorage.getItem('username');
   }
 
   logout() {

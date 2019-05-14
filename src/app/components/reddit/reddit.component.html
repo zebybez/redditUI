@@ -3,12 +3,16 @@
 </p>
 <app-account-small></app-account-small>
 <div>
-<div style="text-align:center" *ngIf="subreddit; else emptySubreddit"><h1>
+<div style="text-align:center" *ngIf="subreddit; else emptySubreddit">
+  <h1>
   {{subreddit.name}}
-</h1></div>
+</h1>
+<label>go to subreddit:</label>
+    <input type="text" class="form control" id="gotoName" [(ngModel)]="gotoName" name="gotoName">
+    <button routerLink="/r/{{gotoName}}">go to</button>
+</div>
 <ng-template #emptySubreddit> This subreddit does not exist </ng-template>
-<br>
-  <br>
+
   <app-post-list [subredditName]="name"></app-post-list>
 </div>
 

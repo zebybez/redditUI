@@ -9,9 +9,14 @@ import {PostService} from '../../services/post/post.service';
 })
 export class PostListComponent implements OnInit {
 
-  @Input() subredditName: string;
+  _subredditName: string;
   posts: Post[];
 
+  @Input()
+  set subredditName(x: string) {
+    this._subredditName = x;
+    this.getPosts();
+  }
   constructor(private postService: PostService) {
   }
 
@@ -20,10 +25,10 @@ export class PostListComponent implements OnInit {
   }
 
   getPosts() {
-    if (this.subredditName === 'all') {
+    if (this._subredditName === 'all') {
       this.postService.getAllPosts().subscribe(x => this.posts = x);
     } else {
-      this.postService.getPostsBySubredditName(this.subredditName).subscribe(x => this.posts = x);
+      this.postService.getPostsBySubredditName(this._subredditName).subscribe(x => this.posts = x);
     }
   }
 }

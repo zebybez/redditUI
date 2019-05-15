@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {PostService} from '../../services/post/post.service';
 import {MessageService} from '../../services/message/message.service';
-import {Post} from '../../domain/post';
-import {Input} from '@angular/core';
 
 @Component({
   selector: 'app-post-create',
@@ -21,13 +19,16 @@ export class PostCreateComponent implements OnInit {
   set subredditName(x: string) {
     this.subName = x;
   }
-  constructor(private postService: PostService, private messageService: MessageService) { }
+
+  constructor(private postService: PostService, private messageService: MessageService) {
+  }
 
   ngOnInit() {
     this.loggedIn = localStorage.getItem('token') !== null;
   }
 
   makePost() {
-    this.postService.makePost(this.subName, this.title, this.content, this.isNSFW).subscribe(x => this.messageService.add('made post:' + (x as Post).title));
+    this.postService.makePost(this.subName, this.title, this.content, false).subscribe(x => window.location.reload());
+    // window.location.reload();
   }
 }

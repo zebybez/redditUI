@@ -14,6 +14,7 @@ export class RedditComponent implements OnInit {
   name: string;
   subreddit: Subreddit;
   gotoName: string;
+  isAll: boolean;
 
   constructor(private route: ActivatedRoute,
               private messageService: MessageService,
@@ -40,7 +41,9 @@ export class RedditComponent implements OnInit {
       this.subreddit = new Subreddit(); // todo: make subreddit constructor
       this.subreddit.name = 'all';
       this.subreddit.rules = 'this is the overall subreddit, the reddit EULA apply';
+      this.isAll = true;
     } else {
+      this.isAll = false;
       this.subredditService.getSubredditByName(this.name).subscribe(x => this.subreddit = x);
     }
   }

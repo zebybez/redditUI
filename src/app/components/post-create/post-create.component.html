@@ -16,6 +16,10 @@
       <br>
       <textarea id="content" form="makePostForm" required [(ngModel)]="content" name="content">Post content goes here...</textarea>
     </div>
+<!--    <div>-->
+<!--      <label for="nsfw">is your post unsafe for work?</label>-->
+<!--      <input type="checkbox" id="nsfw" [(ngModel)]="isNSFW" name="isNSFW">-->
+<!--    </div>-->
     <button type="submit">Make post</button>
   </form>
   <ng-template #invalid>You can currently not post anything here</ng-template>

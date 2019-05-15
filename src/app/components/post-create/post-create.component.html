@@ -1,3 +1,23 @@
 <p>
   post-create works!
 </p>
+<div>
+  <h3>Make a post in this subreddit</h3>
+  <form *ngIf="loggedIn && subName; else invalid" (ngSubmit)="makePost()" id="makePostForm">
+    <div class="form-group">
+      <label for="title">Give your post a title </label>
+      <input type="text" class="form-control" id="title" required [(ngModel)]="title" name="title" #titleCheck="ngModel">
+    </div>
+    <div [hidden]="titleCheck.valid || titleCheck.pristine">
+      Post title is required
+    </div>
+    <div class="form-group">
+      <label for="content">Give some content to your post</label>
+      <br>
+      <textarea id="content" form="makePostForm" required [(ngModel)]="content" name="content">Post content goes here...</textarea>
+    </div>
+    <button type="submit">Make post</button>
+  </form>
+  <ng-template #invalid>You can currently not post anything here</ng-template>
+</div>
+

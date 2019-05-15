@@ -50,4 +50,11 @@ export class PostService {
       catchError(this.handleError<Post[]>('get posts by subreddit'))
     );
   }
+
+  makePost(subName: string, xtitle: string, xcontent: string, xisNSFW: boolean): Observable<Post> {
+    return this.http.post<Post>(this.postUrl, null, {headers: {authorization: 'bearer' + localStorage.getItem('token'), subreddit: subName, title: xtitle, content: xcontent, isNSFW: xisNSFW.toString()}}).pipe(
+      tap(x => this.log('made a post with title: ' + (x as Post).title +  ' in ' + (x as Post).subreddit.name)),
+      catchError(this.handleError<Post>('make post'))
+    );
+  }
 }

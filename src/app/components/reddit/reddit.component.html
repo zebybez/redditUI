@@ -14,6 +14,7 @@
 <ng-template #emptySubreddit> This subreddit does not exist </ng-template>
 
   <app-post-list [subredditName]="name"></app-post-list>
+  <app-post-create [subredditName]="subreddit.name"></app-post-create>
 </div>
 
 <app-reddit-create></app-reddit-create>
